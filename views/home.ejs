@@ -15,13 +15,31 @@
             </a>
             <div class="flex items-center gap-4">
                 <button class="bg-purple-600 text-white border-none py-2 px-4 rounded text-sm cursor-pointer" onclick="window.location.href='/login'">Admin Login</button>
-                <select class="p-2 border border-gray-300 rounded text-sm text-gray-700 bg-white" id="language-select">
+                <select class="p-2 border border-gray-300 rounded text-sm text-gray-700 bg-white" id="language-select" onchange="window.location.href=`/?lang=${this.value}`">
                     <option value="en">English</option>
-                    <option value="es">Español</option>
-                    <option value="fr">Français</option>
-                    <option value="de">Deutsch</option>
+                    <option value="zh">中文 (Mandarin Chinese)</option>
+                    <option value="hi">हिन्दी (Hindi)</option>
+                    <option value="es">Español (Spanish)</option>
+                    <option value="ar">العربية (Arabic)</option>
+                    <option value="fr">Français (French)</option>
+                    <option value="bn">বাংলা (Bengali)</option>
+                    <option value="pt">Português (Portuguese)</option>
+                    <option value="ru">Русский (Russian)</option>
+                    <option value="ur">اردو (Urdu)</option>
+                    <option value="ja">日本語 (Japanese)</option>
+                    <option value="de">Deutsch (German)</option>
+                    <option value="tr">Türkçe (Turkish)</option>
+                    <option value="ko">한국어 (Korean)</option>
+                    <option value="sw">Kiswahili (Swahili)</option>
                 </select>
             </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    const urlParams = new URLSearchParams(window.location.search);
+                    const lang = urlParams.get('lang') || 'en';
+                    document.getElementById('language-select').value = lang;
+                });
+            </script>
         </div>
     </header>
 
@@ -31,15 +49,15 @@
 
         <ul class="space-y-4">
             <% faqs.forEach((faq, index) => { %>
-                <li class="faq-item bg-white border border-gray-300 rounded overflow-hidden">
-                    <div class="p-6 cursor-pointer flex justify-between items-center font-medium" onclick="toggleAnswer(<%= index %>)">
-                        <%= faq.question %>
-                        <span class="text-purple-600 text-xl">+</span>
-                    </div>
-                    <div class="faq-answer px-6 max-h-0 overflow-hidden transition-all duration-300 ease-out">
-                        <%- faq.answer %>
-                    </div>
-                </li>
+            <li class="faq-item bg-white border border-gray-300 rounded overflow-hidden shadow-sm">
+                <div class="p-6 cursor-pointer flex justify-between items-center font-medium hover:bg-gray-100" onclick="toggleAnswer(<%= index %>)">
+                <%= faq.question %>
+                <span class="text-purple-600 text-xl transition-transform duration-300 ease-out transform" id="icon-<%= index %>">+</span>
+                </div>
+                <div class="faq-answer px-6 max-h-0 overflow-hidden transition-all duration-300 ease-out">
+                <%- faq.answer %>
+                </div>
+            </li>
             <% }); %>
         </ul>
     </div>
