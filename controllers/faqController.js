@@ -1,9 +1,5 @@
 const faq = require('../models/faq.model');
-const express = require('express');
 const Redis = require('ioredis');
-const router = express.Router();
-
-router.use(express.json());
 
 const redis = new Redis();
 
