@@ -7,8 +7,8 @@ const faqSchema = new Schema({
         type: String,
         required: true
     },
-    answers: {
-        type: [String],
+    answer: {
+        type: String,
         required: true
     },
     languageMap: {
