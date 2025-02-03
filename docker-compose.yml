@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      MONGO_URI: mongodb://mongo:27017/faq-db
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+      SESSION_SECRET: your_session_secret
+      GOOGLE_APPLICATION_CREDENTIALS: /app/google-key.json
+    volumes:
+      - ./google-key.json:/app/google-key.json
+    depends_on:
+      - mongo
+      - redis
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_DATABASE: faq-db
+
+  redis:
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+
+volumes:
+  redis_data:
