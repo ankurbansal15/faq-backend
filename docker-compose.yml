@@ -9,7 +9,7 @@ services:
       MONGO_URI: mongodb://mongo:27017/faq-db
       REDIS_HOST: redis
       REDIS_PORT: 6379
-      SESSION_SECRET: your_session_secret
+      SESSION_SECRET: 06aaf3cd8cdf7ec3379b5d3e34cb7a1e3ffaf15a2606cf09ff892d24114844c639d4f6f2e5d4b33e7bb4fab864f17976ed7caca6213e970ea4dbf375e52a582c8e8040ecdd110c082f900c16204ba1689d1409659da4454eded0d7fd7f5240e692bdb80f2a5b7aa25e80db8c6e65fa44c111d57ba69e56d6ceb5d4c8625658eeb8a1b1d256db9d1872c9a9fef20ac33b2226849b9f45db5f35a52a1324e813953d7fe701964c452e9ede745675c5fec148b34cddb84029721c01801648b0b91695d948dff61d8c1f0da7a92f83e1fbaa020d63d7ebb1af42e185609e5166d76b5a25d4c4dc727a0f8bccbfda305129ee80b403b41dc62507e6ece466af3b742a
       GOOGLE_APPLICATION_CREDENTIALS: /app/google-key.json
     volumes:
       - ./google-key.json:/app/google-key.json
